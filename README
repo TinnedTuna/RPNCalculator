@@ -1,0 +1,25 @@
+This is a yet-to-be-proved (I.e. I think it is) Turing complete Reverse
+Polish Notation calculator
+
+The language is quite simple:
+
+ * +  -- add the top two operands
+ * -  -- subtract the top two operands
+ * *  -- multiply the top two operands
+ * ^  -- clear the top operand
+ * &  -- Swap the top two operands
+ * $  -- duplicate the top two operands
+ * [  -- enter a loop if the top is not zero
+ * ]  -- exit the loop
+ * ?  -- skip an instruction if the top is not zero
+ * !  -- print debugging information
+ * ,  -- store at the addr on the top of the stack, the next value on the stack
+ * .  -- load from the addr at the top of the stack.
+
+
+Notable bugs:
+ 
+ * Whitespace: It hates white space
+ * Input strings containing ?] have the potential to cause a memory leak
+ * It will parse strings like "A2+" to (65-48) + 2. The -48 is because of
+   shifting to get a numerical value for ascii chars 1-0
